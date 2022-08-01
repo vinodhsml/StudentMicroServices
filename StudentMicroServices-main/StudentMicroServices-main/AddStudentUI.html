@@ -1,0 +1,25 @@
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+
+		$("#b1").click(function(){
+			var id =Number( $("#id").val() );
+			var url=`http://localhost:5076/api/students/${id}`;
+				$.getJSON(url, function (data) {            
+   var row = JSON.parse( JSON.stringify( data ));
+						$("#sname").text(row.sName);
+						$("#course").text(row.course);
+						$("#fee").text(row.fee);
+        });
+		});
+	});
+</script>
+
+<h1>JQuery, Consume API Demo </h1>
+
+Enter ID:
+<input type="number" id="id" /> <br/>
+<button id="b1">Get Students</button>		<hr/>
+SName: <span id="sname" ></span>	<br/>
+Course: <span id="course" ></span>	<br/>
+Fee: <span id="fee" ></span>	<br/>
